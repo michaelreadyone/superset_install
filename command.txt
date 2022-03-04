@@ -1,0 +1,49 @@
+CREATE USER 'mike'@'localhost' IDENTIFIED BY '12345678';
+GRANT CREATE, ALTER, DROP, INSERT, UPDATE, DELETE, SELECT, REFERENCES, RELOAD on *.* TO 'mike'@'localhost' WITH GRANT OPTION;
+
+
+how to add mysql to superset?
+how to deploy flask app?
+how does wsgi work?
+
+
+
+pip uninstall flask-wtf
+pip install flask-wtf==0.14.2
+
+pip uninstall werkzeug
+pip install werkzeug==0.16.1
+
+# Create an admin user in your metadata database (use `admin` as username to be able to load the examples)
+$ export FLASK_APP=superset
+superset fab create-admin
+
+# if shown error "user already existed" delete file superset.db in your home folder at linux, not from superset folder.
+cd /home/<user>/.superset/
+rm -f superset.db
+
+# Load some data to play with
+superset load_examples
+
+# Create default roles and permissions
+superset init
+
+# To start a development web server on port 8088, use -p to bind to another port
+superset run -p 8088 --with-threads --reload --debugger
+
+
+
+
+
+
+# connect to new database
+Here we're going to install pymysql
+pip install pymysql
+Then set the connection in this format
+
+mysql+pymysql://root:123456@localhost/honor
+
+mysql://<UserName>:<DBPassword>@<Database Host>/<Database Name>
+
+mysql://mike:12345678@localhost/newDatabase
+mysql+pymysql://mike:12345678@127.0.0.1/newDatabase
